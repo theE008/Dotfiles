@@ -1,0 +1,8 @@
+#!/bin/bash
+# SmallJazz TTV Radio - Massive Playlist Edition
+mpv --no-video \
+    --ytdl-format="bestaudio" \
+    --input-ipc-server=/tmp/mpvsocket \
+    --shuffle \
+    --loop-playlist=inf \
+    "https://www.youtube.com/playlist?list=PLRpOmXAsTqU4kMrQr-oW-4xxER15GyuFq"

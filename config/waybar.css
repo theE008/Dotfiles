@@ -1,0 +1,61 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "Terminus";
+    font-size: 22px; /* Reduced to 20 for better vertical fit */
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+    min-height: 0;
+}
+
+window#waybar {
+    background: #121212;
+}
+
+/* --- Left Side --- */
+#custom-arch { 
+    background: #5e315b; 
+    color: #121212; 
+}
+
+#custom-arrow-left { 
+    color: #5e315b; 
+    background: transparent; 
+}
+
+/* --- Right Side Powerline Logic --- */
+
+/* The very first triangle on the right */
+#custom-arrow-start {
+    color: #1a1a1a;
+    background: transparent;
+}
+
+#custom-idle, #pulseaudio.mic {
+    background: #1a1a1a;
+    color: #e8e8e8;
+}
+
+/* Transition to Backlight (Obsidian -> Darkest Purple) */
+#custom-arrow1 { background: #1a1a1a; color: #1e1e2e; }
+#backlight { background: #1e1e2e; color: #e8e8e8; }
+
+/* Transition to Network (Darkest Purple -> Deep Purple) */
+#custom-arrow2 { background: #1e1e2e; color: #251b3a; }
+#network { background: #251b3a; color: #e8e8e8; }
+
+/* Transition to Volume (Deep Purple -> Mid Purple) */
+#custom-arrow3 { background: #251b3a; color: #3d2b56; }
+#pulseaudio { background: #3d2b56; color: #e8e8e8; }
+
+/* Transition to Clock (Mid Purple -> Light/Accent Purple) */
+#custom-arrow4 { background: #3d2b56; color: #4b367c; }
+#clock { background: #4b367c; color: #e8e8e8; }
+
+/* Transition to Battery (Accent Purple -> Alive Purple) */
+#custom-arrow5 { background: #4b367c; color: #5e315b; }
+#battery { 
+    background: #5e315b; 
+    color: #e8e8e8; 
+}

@@ -1,0 +1,4 @@
+#!/bin/sh
+
+nvim ~/.bashrc 
+source ~/.bashrc

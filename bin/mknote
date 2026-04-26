@@ -1,0 +1,23 @@
+#!/bin/bash
+
+BASE_DIR="/home/main/Documents/Obsidian/Curso"
+
+if [ -z "$1" ]; then
+    # Default: Open the vault root
+    cd "$BASE_DIR" && nvim .
+else
+    NAME=$1
+    DATE=$(date +%y-%m-%d)
+    COURSE_DIR="$BASE_DIR/$NAME"
+    FILE_PATH="$NAME-$DATE.md"
+
+    # Safety Check: Does the folder actually exist?
+    if [ ! -d "$COURSE_DIR" ]; then
+        echo "❌ Curso '$NAME' não encontrado!"
+        echo "Caminho: $COURSE_DIR"
+        exit 1
+    fi
+
+    # Go to vault root and open the specific note
+    cd "$COURSE_DIR" && nvim "$FILE_PATH"
+fi

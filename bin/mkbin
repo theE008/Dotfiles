@@ -1,0 +1,25 @@
+#!/bin/sh
+
+# Check if a name was provided
+if [ -z "$1" ]; then
+    echo "Uso: mkbin <binário>"
+    exit 1
+fi
+
+BIN_DIR="$HOME/.local/bin"
+TARGET="$BIN_DIR/$1"
+
+# Create directory if it doesn't exist
+mkdir -p "$BIN_DIR"
+
+# If it's a new file, add a default shebang
+if [ ! -f "$TARGET" ]; then
+    echo "#!/bin/sh" > "$TARGET"
+    echo "Script criado: $TARGET"
+fi
+
+# Make sure it's executable
+chmod +x "$TARGET"
+
+# Open in NeoVim
+nvim "$TARGET"

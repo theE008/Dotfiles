@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# The specific UUID for HernestoDalmeida
+UUID="bf48b2f5-bc87-4e15-8c58-f3bd502323e3"
+MOUNT_POINT="/mnt/hd"
+
+# Check if already mounted
+if mountpoint -q "$MOUNT_POINT"; then
+    echo "--- Desmontando HernestoDalmeida ---"
+    sudo umount "$MOUNT_POINT"
+    echo "Diso Desmontado com Sucesso."
+else
+    # Create dir if it doesn't exist
+    [ ! -d "$MOUNT_POINT" ] && sudo mkdir -p "$MOUNT_POINT"
+    
+    echo "--- Montando HernestoDalmeida ---"
+    sudo mount -U "$UUID" "$MOUNT_POINT"
+    
+    # Ownership fix: Ensure 'main' can write to it
+    sudo chown -R $USER:$USER "$MOUNT_POINT"
+    
+    echo "Montado em $MOUNT_POINT"
+fi

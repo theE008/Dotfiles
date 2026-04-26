@@ -1,0 +1,12 @@
+#!/bin/bash
+tmux rename-window "Daily Notes"
+
+BASE_DIR="/home/main/Documents/Obsidian/_Daily/"
+
+DATE=$(date +%Y-%m-%d)
+FILE_PATH="$DATE.md"
+
+# Go to vault root and open the specific note
+cd "$BASE_DIR" && nvim "$FILE_PATH"
+
+tmux rename-window "bash"

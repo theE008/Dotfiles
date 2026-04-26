@@ -1,0 +1,7 @@
+#!/bin/sh
+
+sudo pacman -Qqe | column
+
+echo ""
+
+cat ~/.pacman_reasons.db

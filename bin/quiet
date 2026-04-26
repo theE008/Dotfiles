@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# Nao imprime erros 
+"$@" > /dev/null 2>&1

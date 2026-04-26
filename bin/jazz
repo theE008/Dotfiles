@@ -1,0 +1,6 @@
+#!/bin/bash
+# SmallJazz TTV Radio - Audio Only
+mpv --no-video \
+    --ytdl-format="bestaudio" \
+    --input-ipc-server=/tmp/mpvsocket \
+    "https://www.youtube.com/@smallslive/streams"

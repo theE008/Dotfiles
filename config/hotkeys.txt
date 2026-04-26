@@ -1,0 +1,27 @@
+--- SYSTEM & SESSION ---
+[mod]+Shift+c    : Reload Sway Config
+[mod]+Shift+e    : Exit Sway (Logout)
+[mod]+F11        : Blackout Screen Toggle
+[Print]          : Take Screenshot
+
+--- LAUNCHERS ---
+[mod]+Enter      : Open Terminal (foot)
+[mod]+d          : Open App Launcher (dmenu)
+[mod]+?          : Show this Hotkey Menu
+
+--- NAVIGATION & WORKSPACES ---
+[mod]+[h/j/k/l]  : Focus Window (Vim-style)
+[alt]+j          : Switch to Previous Workspace
+[alt]+k          : Switch to Next Workspace
+[mod]+[1-4]      : Switch to Workspace 1-4
+
+--- WINDOW MANAGEMENT ---
+[mod]+Shift+q    : Kill Focused Window
+[mod]+Shift+hjkl : Move Window Position
+[mod]+v          : Split Vertically (Next app goes BELOW)
+[mod]+b          : Split Horizontally (Next app goes SIDEWAYS)
+
+--- AUDIO & BRIGHTNESS ---
+F10/F11/F12      : Volume Mute / Down / Up
+MicMute Key      : Toggle Microphone
+Brightness Keys  : Adjust Screen Light

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Check if a query was provided
+if [ -z "$1" ]; then
+    echo "Usage: ddg <search query>"
+    exit 1
+fi
+
+# Launch w3m with the DuckDuckGo Lite search URL
+# "$@" captures all arguments as a properly quoted string
+exec w3m "https://duckduckgo.com/lite/?q=$@"

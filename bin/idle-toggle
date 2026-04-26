@@ -1,0 +1,15 @@
+#!/bin/sh
+
+if pgrep -x "swayidle" > /dev/null; then
+    pkill -x swayidle
+    echo "Swayidle Pausado"
+else
+    # Redirecionamos a saída e o erro para o limbo (/dev/null)
+    # E garantimos que ele rode em background (&)
+    swayidle -w \
+        timeout 30 'brightnessctl --save set 1%' resume 'brightnessctl --restore' \
+        timeout 60 'gtklock &' \
+        #timeout 300 'systemctl hibernate' > /dev/null 2>&1 &
+    
+    echo "Swayidle Iniciado"
+fi

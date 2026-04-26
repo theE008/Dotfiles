@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# Check arguments
+if [ -z "$1" ] || [ -z "$2" ]; then
+    echo "Usage: getmusic <URL> <Song_Name>"
+    exit 1
+fi
+
+URL=$1
+NEW_NAME=$2
+FINAL_DIR="/home/main/Music/Buenas"
+TEMP_DIR="$FINAL_DIR/temp_$(date +%s)"
+
+mkdir -p "$TEMP_DIR"
+
+echo "--- Downloading: $NEW_NAME ---"
+
+# 1. Download FLAC + Thumbnail
+yt-dlp -x --audio-format flac --write-thumbnail --convert-thumbnails png \
+    -o "$TEMP_DIR/raw.%(ext)s" "$URL"
+
+# 2. Process Image (Square it)
+IMG_FILE="$TEMP_DIR/raw.png"
+if [ -f "$IMG_FILE" ]; then
+    echo "Squaring thumbnail..."
+    mogrify -gravity Center -extent 1:1 "$IMG_FILE"
+fi
+
+# 3. Convert to MP3 + Embed Art + Set Metadata
+# We use 320k for quality and 'id3v2_version 3' for maximum Android compatibility
+echo "Converting to Mobile-Friendly MP3..."
+ffmpeg -i "$TEMP_DIR/raw.flac" -i "$IMG_FILE" \
+    -map 0:0 -map 1:0 -c:a libmp3lame -b:a 320k \
+    -id3v2_version 3 -metadata title="$NEW_NAME" \
+    -disposition:v:0 attached_pic \
+    "$FINAL_DIR/$NEW_NAME.mp3" -y
+
+# 4. Cleanup
+rm -rf "$TEMP_DIR"
+
+echo "Done! saved as: $FINAL_DIR/$NEW_NAME.mp3"

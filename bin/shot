@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# Essential environment for Wayland tools
+export WAYLAND_DISPLAY=wayland-1
+export XDG_RUNTIME_DIR=/run/user/$(id -u)
+
+if [ -n "$1" ]; then
+    sleep "$1"
+fi
+
+mkdir -p ~/Pictures/Screenshots
+NAME="screenshot_$(date +%Y-%m-%d_%H-%M-%S).png"
+PATH_FULL="$HOME/Pictures/Screenshots/$NAME"
+
+# Slurp is a bit finicky; we'll capture its output first
+GEOM=$(slurp)
+if [ -n "$GEOM" ]; then
+    grim -g "$GEOM" "$PATH_FULL" && wl-copy < "$PATH_FULL"
+    # Optional: play a sound or send a notification here
+fi

@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# 1. Clean up everything
+#pkill sway
+#rfkill block bluetooth
+
+# 3. Finally, start dwl
+sway # -s "sleep 0.5; idle-toggle; foot tmux new-session -A -s main"

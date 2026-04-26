@@ -1,0 +1,66 @@
+#
+# ~/.bashrc
+#
+
+##########################################
+# Parece ser algo do sistema 
+
+# 1. First, check if we are actually in an interactive shell.
+# If not, stop here. This prevents issues with non-interactive scripts.
+[[ $- != *i* ]] && return
+
+# 2. Only start tmux if:
+# - We are NOT already in tmux ($TMUX is empty)
+# - We are NOT in a graphical session (prevents double-launching inside Sway)
+# - We are NOT connected via SSH
+if [[ -z "$TMUX" ]] && [[ -z "$DISPLAY" ]] && [[ -z "$WAYLAND_DISPLAY" ]] && [[ -z "$SSH_CONNECTION" ]]; then
+    tmux attach-session -t default || tmux new-session -s default
+fi
+##########################################
+# Personalização 
+
+# Diretório de binários
+export PATH="$HOME/.local/bin:$PATH"
+
+##########################################
+# MC - Move Check
+
+mc() {
+  # 1. Create the directory (including parents if they don't exist)
+  # May not be ideal
+  # mkdir -p "$1" && 
+  
+  # 2. Change into the directory
+  cd "$1" && 
+
+  # 2.5 Faz um clear 
+  clear &&
+  
+  # 3. Faz um ls 
+  echo "" && lsd && echo ""
+}
+
+##########################################
+# Aliasing
+
+# Nomes do sistema
+alias ls='lsd --color=auto'
+alias grep='grep --color=auto'
+alias cp='xcp'
+
+# Melhorias em calls de apps
+alias wolf='MOZ_ACCELERATED=0 MOZ_ENABLE_WAYLAND=1 quiet librewolf &'
+alias discord='DISCORDO_TOKEN="$(pass social/discord_token)" discordo'
+alias cisco='QT_QPA_PLATFORM=xcb /usr/lib/packettracer/packettracer.AppImage'
+alias fones='bluetooth on && bluetoothctl connect 50:1B:6A:0B:5B:FB'
+alias roblox='flatpak run org.vinegarhq.Sober'
+
+# Requisitador de motivos 
+alias why='~/.config/why/why'
+alias pi='why install "sudo pacman -S"'
+
+# Wayland conf 
+export XDG_RUNTIME_DIR=/run/user/$(id -u)
+
+# Melhorando estrutura do "$ "
+PS1='[\u@\h \W]\$ '
