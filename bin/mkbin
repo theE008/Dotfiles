@@ -6,7 +6,7 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
-BIN_DIR="$HOME/.local/bin"
+BIN_DIR="$HOME/Dotfiles/bin"
 TARGET="$BIN_DIR/$1"
 
 # Create directory if it doesn't exist

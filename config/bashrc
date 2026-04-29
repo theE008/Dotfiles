@@ -20,24 +20,31 @@ fi
 # Personalização 
 
 # Diretório de binários
-export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/Dotfiles/bin:$PATH"
 
 ##########################################
-# MC - Move Check
+# File Viewer
 
-mc() {
-  # 1. Create the directory (including parents if they don't exist)
-  # May not be ideal
-  # mkdir -p "$1" && 
-  
-  # 2. Change into the directory
-  cd "$1" && 
+# go and view
+v() {
+    # If no argument is provided, target becomes current directory (.)
+    local target="${1:-.}"
 
-  # 2.5 Faz um clear 
-  clear &&
-  
-  # 3. Faz um ls 
-  echo "" && lsd && echo ""
+    if [ -d "$target" ]; then
+        # It's a directory: Go there (even if 'there' is '.') and refresh
+        cd "$target" && clear && echo -e "\n[\e[1;33mOnde: $PWD\e[0m]" && lsd && echo ""
+    elif [ -f "$target" ]; then
+        # It's a file: Open with Neovim
+        nvim "$target"
+    else
+        echo -e "\e[1;31mKavatron Error:\e[0m '$target' not found."
+    fi
+}
+
+# Create and view 
+vd() 
+{
+    mkdir "$1" && v "$1"
 }
 
 ##########################################
@@ -49,11 +56,9 @@ alias grep='grep --color=auto'
 alias cp='xcp'
 
 # Melhorias em calls de apps
-alias wolf='MOZ_ACCELERATED=0 MOZ_ENABLE_WAYLAND=1 quiet librewolf &'
 alias discord='DISCORDO_TOKEN="$(pass social/discord_token)" discordo'
 alias cisco='QT_QPA_PLATFORM=xcb /usr/lib/packettracer/packettracer.AppImage'
 alias fones='bluetooth on && bluetoothctl connect 50:1B:6A:0B:5B:FB'
-alias roblox='flatpak run org.vinegarhq.Sober'
 
 # Requisitador de motivos 
 alias why='~/.config/why/why'

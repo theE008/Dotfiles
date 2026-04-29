@@ -1,1 +1,30 @@
 [2026-04-26 12:05] networkmanager: [INSTALLED] Melhor sistema de conexão a internet
+[2026-04-27 09:17] tmux: [INSTALLED] Multiplexador de terminal
+[2026-04-27 09:30] arch-wiki-lite: [INSTALLED] Wiki do arch linux
+[2026-04-27 09:31] btop: [INSTALLED] Visualizador de eficiência do sistema
+[2026-04-27 09:32] fastfetch: [INSTALLED] Visualizador de OS
+[2026-04-27 09:33] flatpak: [INSTALLED] Instalador de pacotes mais complexos
+[2026-04-27 09:33] foot: [INSTALLED] Terminal para sway
+[2026-04-27 09:34] kew: [INSTALLED] Music player
+[2026-04-27 09:35] lsd: [INSTALLED] Riced cd
+[2026-04-27 09:35] mpv: [INSTALLED] Player de mídia
+[2026-04-27 09:35] neovim: [INSTALLED] Editor de texto
+[2026-04-27 09:36] noto-fonts-emoji: [INSTALLED] Fontes
+[2026-04-27 09:36] terminus-font: [INSTALLED] Fontes
+[2026-04-27 09:47] sway: [INSTALLED] Pacotes necessários para sway
+[2026-04-27 09:47] swaybg: [INSTALLED] Pacotes necessários para sway
+[2026-04-27 09:47] swayidle: [INSTALLED] Pacotes necessários para sway
+[2026-04-27 09:47] swaylock: [INSTALLED] Pacotes necessários para sway
+[2026-04-27 09:47] waybar: [INSTALLED] Pacotes necessários para sway
+[2026-04-27 09:47] wayland-protocols: [INSTALLED] Pacotes necessários para sway
+[2026-04-27 09:47] wl-clipboard: [INSTALLED] Pacotes necessários para sway
+[2026-04-27 09:47] xorg-xwayland: [INSTALLED] Pacotes necessários para sway
+[2026-04-27 09:48] syncthing: [INSTALLED] Sincronização de arquivos com celular
+[2026-04-27 09:50] ufw: [INSTALLED] Firewall
+[2026-04-27 09:51] zip: [INSTALLED] Compressão de arquivos
+[2026-04-27 09:51] unzip: [INSTALLED] Compressão de arquivos
+[2026-04-27 09:53] w3m: [INSTALLED] Browser de CLI
+[2026-04-27 10:30] steam: [INSTALLED] Baixar jogos
+[2026-04-27 10:31] mandoc: [INSTALLED] Toda a wiki que preciso
+[2026-04-27 10:31] arch-wiki-lite: [INSTALLED] Toda a wiki que preciso
+[2026-04-27 10:52] base-devel: [INSTALLED] Yay
