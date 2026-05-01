@@ -1,0 +1,109 @@
+🛠 Phase 1: Environment & Connectivity
+
+Before you touch the disk, you need to see and talk to the world.
+
+    lsblk: List all block devices. Essential for identifying which disk is your SSD (e.g., nvme0n1) and which is your backup HDD.
+
+    setfont ter-116n: If the text is too small on a HiDPI screen, this loads a larger Terminus font (if available on the ISO).
+
+    iwctl: The wireless CLI.
+
+        device list (Find your card)
+
+        station wlan0 scan
+
+        station wlan0 get-networks
+
+        station wlan0 connect SSID
+
+    ping google.com: The "sanity check" to ensure the packets are moving.
+
+🏗 Phase 2: Disk Destruction & Creation
+
+WARNING: This is the "Point of No Return."
+
+    wipefs -a /dev/nvme0n1: Wipes filesystem signatures. It makes the disk look brand new.
+
+    cfdisk /dev/nvme0n1: The easiest TUI for partitioning.
+
+        Select gpt.
+
+        Create a 512M partition (Type: EFI System).
+
+        Create the rest as a Linux filesystem partition.
+
+    mkfs.fat -F 32 /dev/nvme0n1p1: Formats the EFI boot partition.
+
+    mkfs.ext4 /dev/nvme0n1p2: Formats your main system partition.
+
+📥 Phase 3: The Bootstrap (Base System)
+
+Mounting the drives and pulling the core files.
+
+    mount /dev/nvme0n1p2 /mnt: Mounts the root.
+
+    mount --mkdir /dev/nvme0n1p1 /mnt/boot: Mounts the EFI partition into the system.
+
+    pacstrap -K /mnt base linux linux-firmware base-devel networkmanager nvim: Downloads the "DNA" of the OS. We include base-devel so you can use yay later.
+
+    genfstab -U /mnt >> /mnt/etc/fstab: Tells the OS how to find its own partitions on boot.
+
+    arch-chroot /mnt: "Teleports" you inside your new OS.
+
+⚙️ Phase 4: System Configuration (Inside Chroot)
+
+You are now "inside" the SSD.
+
+    ln -sf /usr/share/zoneinfo/Region/City /etc/localtime: Sets your clock.
+
+    hwclock --systohc: Syncs the hardware clock.
+
+    nvim /etc/locale.gen: Uncomment en_US.UTF-8 UTF-8 (or your preference).
+
+    locale-gen: Generates the language files.
+
+    echo "Kavatron7K" > /etc/hostname: Names the beast.
+
+    passwd: Sets the root password.
+
+👤 Phase 5: Users & Permissions
+
+    useradd -m -G wheel main: Creates your user and adds it to the "sudo-capable" group.
+
+    passwd main: Sets your user password.
+
+    EDITOR=nvim visudo: Find the line %wheel ALL=(ALL:ALL) ALL and uncomment it. This gives you sudo powers.
+
+🚢 Phase 6: Bootloader & Exit
+
+    grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB: Installs the GRUB "brain" to the EFI partition.
+
+    grub-mkconfig -o /boot/grub/grub.cfg: Generates the actual boot menu.
+
+    systemctl enable NetworkManager: CRITICAL. If you forget this, you won't have internet on the first reboot.
+
+    exit -> umount -R /mnt -> reboot.
+
+🚀 Phase 7: Post-Reboot Recovery
+
+You are now logged into the TTY of your new system.
+
+    nmtui: The easiest way to reconnect to Wi-Fi if iwctl isn't there.
+
+    sudo pacman -S sway foot librewolf-bin git: Gets your basic "Human Interface" back.
+
+    mount /dev/sdb1 /mnt: Mount your intern HDD (the backup).
+
+    cp -r /mnt/backup/.ssh ~: Restore your keys.
+
+    cp -r /mnt/backup/.gnupg ~: Restore your encryption.
+
+    git clone [your_dotfiles_url]: Pull the blueprint.
+
+    ./install.bash: Sit back and watch the Kavatron rebuild itself.
+
+One final tool for your belt:
+
+man [command]: Since you said you don't use it much, remember: inside man, press / to search for a keyword and q to quit. It’s basically less for manuals.
+
+Do you have your Dotfiles git URL written down physically? (That's the one thing you can't search for if the system is dead!)
