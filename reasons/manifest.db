@@ -22,6 +22,7 @@ pacman|networkmanager
 pacman|nodejs
 pacman|noto-fonts-emoji
 pacman|npm
+pacman|openssh
 pacman|pipewire
 pacman|pipewire-alsa
 pacman|pipewire-pulse

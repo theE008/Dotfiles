@@ -37,3 +37,4 @@ sudo pacman -S xdg-desktop-portal-wlr # Reason: Screen Share
 sudo pacman -S python-pillow # Reason: Para brand
 sudo pacman -S xdg-desktop-portal xdg-desktop-portal-wlr xdg-desktop-portal-gtk # Reason: Interface de popup
 yay -S swaylock-effects # Reason: Screen Lock
+sudo pacman -S openssh # Reason: SSH
