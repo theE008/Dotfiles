@@ -1,7 +1,0 @@
-#!/bin/bash
-# ~/.local/bin/wifi_status
-
-# Get the SSID of the active Wi-Fi connection
-SSID=$(nmcli -t -f active,ssid dev wifi | grep '^yes' | cut -d: -f2)
-
-echo "󰖩  $SSID"

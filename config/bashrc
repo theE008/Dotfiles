@@ -9,13 +9,6 @@
 # If not, stop here. This prevents issues with non-interactive scripts.
 [[ $- != *i* ]] && return
 
-# 2. Only start tmux if:
-# - We are NOT already in tmux ($TMUX is empty)
-# - We are NOT in a graphical session (prevents double-launching inside Sway)
-# - We are NOT connected via SSH
-if [[ -z "$TMUX" ]] && [[ -z "$DISPLAY" ]] && [[ -z "$WAYLAND_DISPLAY" ]] && [[ -z "$SSH_CONNECTION" ]]; then
-    tmux attach-session -t default || tmux new-session -s default
-fi
 ##########################################
 # Personalização 
 
@@ -27,14 +20,18 @@ export PATH="$HOME/Dotfiles/bin:$PATH"
 
 # go and view
 v() {
-    # If no argument is provided, target becomes current directory (.)
+    # 1. Take the first argument as the target, default to '.'
     local target="${1:-.}"
+    
+    # 2. Shift the arguments so that $1 (the folder/file) is removed
+    # and all remaining arguments ($@) are just the flags for lsd
+    shift $(($# > 0 ? 1 : 0))
 
     if [ -d "$target" ]; then
-        # It's a directory: Go there (even if 'there' is '.') and refresh
-        cd "$target" && clear && echo -e "\n[\e[1;33mOnde: $PWD\e[0m]" && lsd && echo ""
+        # It's a directory: Change directory, clear, and pass all remaining flags to lsd
+        cd "$target" && clear && echo -e "\n[\e[1;33mOnde: $PWD\e[0m]" && lsd "$@" && echo ""
     elif [ -f "$target" ]; then
-        # It's a file: Open with Neovim
+        # It's a file: Open with Neovim (flags are ignored for nvim in this logic)
         nvim "$target"
     else
         echo -e "\e[1;31mKavatron Error:\e[0m '$target' not found."
@@ -42,9 +39,15 @@ v() {
 }
 
 # Create and view 
-vd() 
-{
-    mkdir "$1" && v "$1"
+c() {
+    # 1. Store the directory name
+    local dir_name="$1"
+
+    # 2. Shift to remove the name from the argument list
+    shift $(($# > 0 ? 1 : 0))
+
+    # 3. Create the directory, then call v with the name + any remaining flags
+    mkdir -p "$dir_name" && v "$dir_name" "$@"
 }
 
 ##########################################
@@ -53,16 +56,19 @@ vd()
 # Nomes do sistema
 alias ls='lsd --color=auto'
 alias grep='grep --color=auto'
-alias cp='xcp'
+alias tree='lsd --tree'
 
 # Melhorias em calls de apps
 alias discord='DISCORDO_TOKEN="$(pass social/discord_token)" discordo'
 alias cisco='QT_QPA_PLATFORM=xcb /usr/lib/packettracer/packettracer.AppImage'
 alias fones='bluetooth on && bluetoothctl connect 50:1B:6A:0B:5B:FB'
 
-# Requisitador de motivos 
+# Requisitador de motivos E W's
 alias why='~/.config/why/why'
+alias where='whereis'
+alias what='whatis'
 alias pi='why install "sudo pacman -S"'
+complete -A directory mk
 
 # Wayland conf 
 export XDG_RUNTIME_DIR=/run/user/$(id -u)

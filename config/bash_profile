@@ -1,14 +1,7 @@
-#
 # ~/.bash_profile
-#
-
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
-##########################################
-# Inicia o dwl automaticamente no tty1
-
-if [ -z "$DISPLAY" ] && [ -z "$WAYLAND_DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
-
-    # Inicia o tmux em si
-	exec sway  # > ~/tty1.log 2>&1
+# If we are on TTY1 and not in a GUI yet, jump straight into Sway
+if [[ -z "$DISPLAY" ]] && [[ -z "$WAYLAND_DISPLAY" ]] && [[ "$(tty)" = "/dev/tty1" ]]; then
+    exec sway
 fi

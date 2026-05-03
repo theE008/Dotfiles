@@ -1,0 +1,17 @@
+#!/bin/bash
+
+DIR='/home/main/Dotfiles/bin/'
+EDITOR='nvim'
+FILE=''
+if [ $# -lt 1 ]; then
+    cd "$DIR" && $EDITOR .
+    exit 0
+else
+    FILE=$FILE$1
+    shift || true
+    IN_EXT=
+    FILE=$FILE$IN_EXT
+  cd "$DIR" && $EDITOR "$FILE"
+fi
+
+# Feito com MK-KT

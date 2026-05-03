@@ -28,3 +28,39 @@
 [2026-04-27 10:31] mandoc: [INSTALLED] Toda a wiki que preciso
 [2026-04-27 10:31] arch-wiki-lite: [INSTALLED] Toda a wiki que preciso
 [2026-04-27 10:52] base-devel: [INSTALLED] Yay
+[2026-05-02 13:56] brightnessctl: [INSTALLED] Controle do brilho
+[2026-05-02 14:03] terminus-font: <REMOVED> Fonte errada
+[2026-05-02 14:04] ttf-terminus-nerd: [INSTALLED] Fonte bonita
+[2026-05-02 14:13] wl-clipboard: [INSTALLED] Capituras de tela
+[2026-05-02 14:13] slurp: [INSTALLED] Capituras de tela
+[2026-05-02 14:13] grim: [INSTALLED] Capituras de tela
+[2026-05-02 12:27] steam: [INSTALLED] Baixar Jogos
+[2026-05-02 12:30] wofi: [INSTALLED] App Launcher
+[2026-05-02 12:31] wofi: <REMOVED> Não é o que eu pensava
+[2026-05-02 12:32] dmenu: [INSTALLED] App Launcher
+[2026-05-02 12:33] bemenu: [INSTALLED] Testando outro app launcher
+[2026-05-02 12:35] dmenu: <REMOVED> Usando um mais recente
+[2026-05-02 13:17] libpulse: [INSTALLED] Erros de audio
+[2026-05-02 13:17] alsa-plugins: [INSTALLED] Erros de audio
+[2026-05-02 21:14] fzf: [INSTALLED] Fuzzy Search
+[2026-05-02 21:17] fzf: [INSTALLED] Fuzzy Search
+[2026-05-02 21:30] less: [INSTALLED] Essencial para o gitree
+[2026-05-02 21:33] nodejs: [INSTALLED] Ferramentas para o neovim
+[2026-05-02 21:33] npm: [INSTALLED] Ferramentas para o neovim
+[2026-05-02 21:33] python: [INSTALLED] Ferramentas para o neovim
+[2026-05-02 21:33] python-pip: [INSTALLED] Ferramentas para o neovim
+[2026-05-03 10:33] yt-dlp: [INSTALLED] w3m youtube watcher
+[2026-05-03 10:39] bluez: [INSTALLED] bluez-utils
+[2026-05-03 10:41] bluez: [INSTALLED] Bluetooth
+[2026-05-03 10:41] bluez-utils: [INSTALLED] Bluetooth
+[2026-05-03 12:24] pipewire: [INSTALLED] Audio Stack
+[2026-05-03 12:24] pipewire-pulse: [INSTALLED] Audio Stack
+[2026-05-03 12:24] pipewire-alsa: [INSTALLED] Audio Stack
+[2026-05-03 12:24] wireplumber: [INSTALLED] Audio Stack
+[2026-05-03 12:24] libpulse: [INSTALLED] Audio Stack
+[2026-05-03 12:24] alsa-plugins: [INSTALLED] Audio Stack
+[2026-05-03 12:24] xdg-desktop-portal-wlr: [INSTALLED] Screen Share
+[2026-05-03 12:49] python-pillow: [INSTALLED] Para brand
+[2026-05-03 16:37] xdg-desktop-portal: [INSTALLED] Interface de popup
+[2026-05-03 16:37] xdg-desktop-portal-wlr: [INSTALLED] Interface de popup
+[2026-05-03 16:37] xdg-desktop-portal-gtk: [INSTALLED] Interface de popup

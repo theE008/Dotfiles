@@ -1,0 +1,32 @@
+#!/bin/bash
+
+DIR='/home/main/Documents/Notes/'
+EDITOR='nvim'
+FILE=''
+if [ $# -lt 1 ]; then
+    cd "$DIR" && $EDITOR .
+    exit 0
+else
+    AM=$(date +%y-%m)
+    DIR=$DIR/$AM
+    mkdir -p "$DIR"
+    DIR=$DIR/$1
+    FILE=$FILE$1
+    shift || true
+    if [ ! -d "$DIR" ]; then
+        echo "Não encontrado!"
+        read -p "Deseja Criar? (y/N): " IN_CRIAR
+        if [[ "$IN_CRIAR" == "y" ]]; then
+            mkdir -p "$DIR"
+        else
+            echo "Diretório não encontrado!"
+            exit 1
+        fi
+    fi
+    FILE=$FILE$(date +%y-%m-%d)
+    IN_EXT=.md
+    FILE=$FILE$IN_EXT
+  cd "$DIR" && $EDITOR "$FILE"
+fi
+
+# Feito com MK-KT

@@ -1,0 +1,19 @@
+#!/bin/bash
+
+DIR='/home/main/Documents/Diary/'
+EDITOR='nvim'
+FILE=''
+if [ $# -lt 0 ]; then
+    cd "$DIR" && $EDITOR .
+    exit 0
+else
+    AM=$(date +%y-%m)
+    DIR=$DIR/$AM
+    mkdir -p "$DIR"
+    FILE=$FILE$(date +%y-%m-%d)
+    IN_EXT=.md
+    FILE=$FILE$IN_EXT
+  cd "$DIR" && $EDITOR "$FILE"
+fi
+
+# Feito com MK-KT

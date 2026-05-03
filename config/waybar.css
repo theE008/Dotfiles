@@ -1,7 +1,7 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: "Terminus";
+    font-family: "Terminess Nerd Font";
     font-size: 22px; /* Reduced to 20 for better vertical fit */
     font-weight: 700;
     margin: 0;
@@ -43,7 +43,7 @@ window#waybar {
 
 /* Transition to Network (Darkest Purple -> Deep Purple) */
 #custom-arrow2 { background: #1e1e2e; color: #251b3a; }
-#network { background: #251b3a; color: #e8e8e8; }
+#network, #bluetooth { background: #251b3a; color: #e8e8e8; }
 
 /* Transition to Volume (Deep Purple -> Mid Purple) */
 #custom-arrow3 { background: #251b3a; color: #3d2b56; }

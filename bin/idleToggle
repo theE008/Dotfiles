@@ -8,8 +8,8 @@ else
     # E garantimos que ele rode em background (&)
     swayidle -w \
         timeout 30 'brightnessctl --save set 1%' resume 'brightnessctl --restore' \
-        timeout 60 'gtklock &' \
-        #timeout 300 'systemctl hibernate' > /dev/null 2>&1 &
+        timeout 60 'lock  &' \
+        timeout 300 'systemctl hibernate' > /dev/null 2>&1 &
     
     echo "Swayidle Iniciado"
 fi

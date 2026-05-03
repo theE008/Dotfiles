@@ -1,4 +1,0 @@
-#!/bin/sh
-
-gamescope -W 1920 -H 1080 -- steam
-

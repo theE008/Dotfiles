@@ -57,7 +57,12 @@ echo "IÇAR AS VELAS! (Criando diretórios padrão)"
 # Do sistema
 mkdir ~/Backups 
 mkdir ~/Desktop 
+mkdir ~/Desktop/Snippets
+mkdir ~/Desktop/Old
 mkdir ~/Documents 
+mkdir ~/Documents/Diary 
+mkdir ~/Documents/Notes
+mkdir ~/Documents/Narrate
 mkdir ~/Downloads 
 mkdir ~/Music
 mkdir ~/Videos
@@ -70,6 +75,7 @@ mkdir ~/.config/sway
 mkdir ~/.config/waybar
 mkdir ~/.config/kew 
 mkdir ~/.config/foot 
+mkdir ~/.w3m # Muito velho pra ser padrão
 
 echo
 echo "LARGUEM AS AMARRAS! (Criando Symlinks)"
@@ -82,9 +88,10 @@ LOCAL="$HOME/.config"
 ln -sf "$CONF/bashrc"       "$HOME/.bashrc"
 ln -sf "$CONF/bash_profile" "$HOME/.bash_profile"
 ln -sf "$CONF/tmux.conf"    "$HOME/.tmux.conf"
+ln -sf "$CONF/w3m.conf"     "$HOME/.w3m/config"
 
 # Em específico (Arquivos que vão para dentro de .config)
-ln -sf "$CONF/nvim_init.lua" "$LOCAL/nvim/init.lua"
+ln -sf "$CONF/nvim_init.lua"  "$LOCAL/nvim/init.lua"
 ln -sf "$CONF/sway.conf"      "$LOCAL/sway/config"
 ln -sf "$CONF/hotkeys.txt"    "$LOCAL/sway/hotkeys.txt"
 ln -sf "$CONF/waybar.conf"    "$LOCAL/waybar/config"
@@ -103,8 +110,12 @@ git clone https://github.com/theE008/why.git ~/.config/why/
 
 # Yay
 sudo pacman -S --needed base-devel 
-git clone https://aur.archlinux.org/yay.git
+git clone https://aur.archlinux.org/yay.git yay/
 (cd yay && makepkg -si)
+rm -rf yay/
+
+# Multilib
+sudo sed -i '/\[multilib\]/,/Include/s/^#//' /etc/pacman.conf && sudo pacman -Syu
 
 # Salvando como variável
 REASONS_SCRIPT="$REPO/reasons/install.bash"
@@ -116,6 +127,15 @@ if [[ -f "$REASONS_SCRIPT" ]]; then
 else
     echo "Aviso: Nenhum manifesto encontrado em $REASONS_SCRIPT"
 fi
+
+echo 
+echo "DEEM CORDA! (Arrumando relógio)"
+sudo timedatectl set-timezone America/Sao_Paulo
+sudo timedatectl set-ntp true
+
+echo 
+echo "AGRADEÇAM AO MAR AZUL (Ativando bluetooth)"
+sudo systemctl enable --now bluetooth
 
 source ~/.bashrc
 
