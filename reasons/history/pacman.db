@@ -65,3 +65,6 @@
 [2026-05-03 16:37] xdg-desktop-portal-wlr: [INSTALLED] Interface de popup
 [2026-05-03 16:37] xdg-desktop-portal-gtk: [INSTALLED] Interface de popup
 [2026-05-03 17:41] openssh: [INSTALLED] SSH
+[2026-05-04 07:39] tree-sitter: [INSTALLED] NVim dependency
+[2026-05-04 07:44] tree-sitter-cli: [INSTALLED] NVim dependency
+[2026-05-04 07:58] python-pylatexenc: [INSTALLED] Nvim dependency

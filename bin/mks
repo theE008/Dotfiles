@@ -1,0 +1,30 @@
+#!/bin/bash
+
+DIR='/home/main/Desktop/Snippets/'
+EDITOR='nvim'
+FILE=''
+if [ $# -lt 2 ]; then
+    cd "$DIR" && $EDITOR .
+    exit 0
+else
+    DIR=$DIR/$1
+    FILE=$FILE_$1
+    shift || true
+    if [ ! -d "$DIR" ]; then
+        echo "Não encontrado!"
+        read -p "Deseja Criar? (y/N): " IN_CRIAR
+        if [[ "$IN_CRIAR" == "y" ]]; then
+            mkdir -p "$DIR"
+        else
+            echo "Diretório não encontrado!"
+            exit 1
+        fi
+    fi
+    FILE=$FILE_$1
+    shift || true
+    IN_EXT=.c
+    FILE=$FILE$IN_EXT
+  cd "$DIR" && $EDITOR "$FILE"
+fi
+
+# Feito com MK-KT

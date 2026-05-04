@@ -67,6 +67,7 @@ mkdir ~/Downloads
 mkdir ~/Music
 mkdir ~/Videos
 mkdir ~/Pictures 
+mkdir ~/Pictures/Screenshots
 
 # Das config
 mkdir ~/.config

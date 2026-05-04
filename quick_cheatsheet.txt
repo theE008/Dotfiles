@@ -106,7 +106,3 @@ One final tool for your belt:
 
 man [command]: Since you said you don't use it much, remember: inside man, press / to search for a keyword and q to quit. It’s basically less for manuals.
 
-Do you have your Dotfiles git URL written down physically? (That's the one thing you can't search for if the system is dead!)
-
----
-

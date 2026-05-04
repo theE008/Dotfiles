@@ -87,30 +87,18 @@ require("lazy").setup({
   { "ThePrimeagen/vim-be-good" },
 -- The Math Renderer (The only one you really need for "pretty")
 {
-    'MeanderingProgrammer/render-markdown.nvim',
-    opts = {
-      -- This ensures it renders in all modes (Normal, Insert, etc.)
-      render_modes = { 'n', 'c', 'i', 'v' }, 
-      latex = {
-        enabled = true,
-        position = 'overlay',
-      },
-      -- ADD THIS: Updates the symbols as you type/move
-      anti_conceal = {
-        enabled = true,
-        ignore = {
-            code_foreground = true,
-            latex_foreground = true,
-        },
-      },
-      -- This forces a refresh on buffer changes
-      on = {
-        attach = function()
-          require('render-markdown').enable()
-        end,
-      },
+  'MeanderingProgrammer/render-markdown.nvim',
+  opts = {
+    render_modes = { 'n', 'c', 'i', 'v' },
+    latex = {
+      enabled = true,
+      -- Use the tool you just installed via pacman
+      converter = 'latex2text', 
+      position = 'overlay',
     },
+    anti_conceal = { enabled = true },
   },
+},
   -- Obsidian
   {
     "epwalsh/obsidian.nvim",
@@ -122,8 +110,10 @@ require("lazy").setup({
       ui = { enable = false },
       workspaces = {
         {
-          name = "personal",
-          path = "~/Documents/Obsidian/",
+          name = "cwd",
+          path = function()
+              return vim.fn.getcwd()
+          end,
         },
       },
       preferred_link_style = "wiki",

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+cp "$1" ~/Dotfiles/Pictures/bg.png
+brander ~/Dotfiles/Pictures/bg.png
+cp ~/Dotfiles/Pictures/branded_bg.png ~/Dotfiles/Pictures/bg.png
+
+

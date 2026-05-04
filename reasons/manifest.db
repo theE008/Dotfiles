@@ -29,6 +29,7 @@ pacman|pipewire-pulse
 pacman|python
 pacman|python-pillow
 pacman|python-pip
+pacman|python-pylatexenc
 pacman|slurp
 pacman|steam
 pacman|sway
@@ -37,6 +38,8 @@ pacman|swayidle
 pacman|swaylock
 pacman|syncthing
 pacman|tmux
+pacman|tree-sitter
+pacman|tree-sitter-cli
 pacman|ttf-terminus-nerd
 pacman|ufw
 pacman|unzip
