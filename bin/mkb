@@ -12,6 +12,7 @@ else
     IN_EXT=
     FILE=$FILE$IN_EXT
   cd "$DIR" && $EDITOR "$FILE"
+  chmod +x "$FILE"
 fi
 
 # Feito com MK-KT

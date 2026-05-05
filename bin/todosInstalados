@@ -3,5 +3,9 @@
 sudo pacman -Qqe | column
 
 echo ""
+echo "Instalados por você:"
+(cd ~ && sh why reason " ")
 
-cat ~/.pacman_reasons.db
+echo ""
+echo "Vieram do sistema:"
+(cd ~/Dotfiles/ && sh why reason " ")

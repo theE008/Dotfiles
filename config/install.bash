@@ -71,6 +71,7 @@ mkdir ~/Documents/Narrate
 mkdir ~/Downloads 
 mkdir ~/Music
 mkdir ~/Videos
+mkdir ~/Videos/OBS
 mkdir ~/Pictures 
 mkdir ~/Pictures/Screenshots
 
@@ -82,6 +83,8 @@ mkdir ~/.config/waybar
 mkdir ~/.config/kew 
 mkdir ~/.config/foot 
 mkdir ~/.w3m # Muito velho pra ser padrão
+mkdir -p ~/.config/obs-studio/basic/profiles/Untitled # Estrutura esquisita do obs
+mkdir -p ~/.config/obs-studio/basic/scenes
 
 echo
 echo "LARGUEM AS AMARRAS! (Criando Symlinks)"
@@ -103,7 +106,9 @@ ln -sf "$CONF/hotkeys.txt"    "$LOCAL/sway/hotkeys.txt"
 ln -sf "$CONF/waybar.conf"    "$LOCAL/waybar/config"
 ln -sf "$CONF/waybar.css"     "$LOCAL/waybar/style.css"
 ln -sf "$CONF/foot.ini"       "$LOCAL/foot/foot.ini"
-
+ln -sf "$CONF/obs.ini"        "$LOCAL/obs-studio/global.ini"
+ln -sf "$CONF/obs.basic"      "$LOCAL/obs-studio/basic/profiles/Untitled/basic.ini"
+ln -sf "$CONF/obs.json"        "$LOCAL/obs-studio/basic/scenes/Untitled.json"
 echo
 echo "GUARNIÇÃO, AS PEÇAS! (Instalando coisas)"
 

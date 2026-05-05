@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# Check if both arguments were passed
+if [ -z "$1" ] || [ -z "$2" ]; then
+    echo "Usage: $0 <current_config_path> <repo_destination_subpath>"
+    echo "Example: $0 ~/.config/obs-studio/global.ini obs-studio/global.ini"
+    exit 1
+fi
+
+SRC="$1"
+DEST="$HOME/Dotfiles/config/$2"
+
+# 1. Create the parent directory in the repo if it doesn't exist
+mkdir -p "$(dirname "$DEST")"
+
+# 2. Copy the file/directory safely
+cp -r "$SRC" "$DEST"
+
+# 3. Double-check the copy worked BEFORE destroying the original
+if [ $? -eq 0 ]; then
+    # Backup the original just in case, instead of instantly deleting it
+    mv "$SRC" "$SRC.bak"
+    
+    # 4. Create the symlink (Real file first, Symlink location second)
+    ln -s "$DEST" "$SRC"
+    echo "⛵ Successfully moved and linked $1 -> $DEST"
+    echo "📦 Old file backed up at $SRC.bak"
+else
+    echo "❌ Error: Copy failed. Aborting to save your files!"
+    exit 1
+fi

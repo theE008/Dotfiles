@@ -1,7 +1,7 @@
 ### UI
 sudo pacman -S tmux --needed --noconfirm # Reason: Multiplexador de terminal
 sudo pacman -S foot --needed --noconfirm # Reason: Terminal para sway
-sudo pacman -S sway swaybg swayidle swaylock waybar wayland-protocols wl-clipboard xorg-xwayland --needed --noconfirm # Reason: Pacotes necessários para sway
+sudo pacman -S sway swaybg swayidle waybar wayland-protocols wl-clipboard xorg-xwayland --needed --noconfirm # Reason: Pacotes necessários para sway
 sudo pacman -S brightnessctl --needed --noconfirm # Reason: Controle do brilho
 sudo pacman -S ttf-terminus-nerd --needed --noconfirm # Reason: Fonte bonita
 sudo pacman -S bemenu --needed --noconfirm # Reason: Testando outro app launcher
@@ -40,3 +40,5 @@ yay -S librewolf-bin --needed --noconfirm # Reason: Browser Seguro
 sudo pacman -S neovim --needed --noconfirm # Reason: Editor de texto
 sudo pacman -S zip unzip --needed --noconfirm # Reason: Compressão de arquivos
 sudo pacman -S python-pillow --needed --noconfirm # Reason: Para brand
+sudo pacman -S obs-studio # Reason: Gravar video
+sudo pacman -S xdg-desktop-portal # Reason: OBS

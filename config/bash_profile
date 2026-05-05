@@ -3,5 +3,9 @@
 
 # If we are on TTY1 and not in a GUI yet, jump straight into Sway
 if [[ -z "$DISPLAY" ]] && [[ -z "$WAYLAND_DISPLAY" ]] && [[ "$(tty)" = "/dev/tty1" ]]; then
+
+    export XDG_CURRENT_DESKTOP=sway
+    export XDG_SESSION_TYPE=wayland   
     exec sway
+
 fi
