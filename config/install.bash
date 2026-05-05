@@ -50,6 +50,11 @@ if [[ ! -d "$REPO" ]]; then
     exit 1
 fi
 
+# Garantir sudo 
+sudo -v
+# Keep-alive: update existing sudo time stamp if the script takes a while
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
 # Criando a Hierarquia Padrão de diretórios
 echo 
 echo "IÇAR AS VELAS! (Criando diretórios padrão)"
@@ -103,20 +108,20 @@ echo
 echo "GUARNIÇÃO, AS PEÇAS! (Instalando coisas)"
 
 # Atualizar primeiro
-sudo pacman -Syu
+sudo pacman -Syu --noconfirm
 
 # Git, Why
-sudo pacman -Sy git 
+sudo pacman -Sy git --noconfirm
 git clone https://github.com/theE008/why.git ~/.config/why/
 
 # Yay
-sudo pacman -S --needed base-devel 
-git clone https://aur.archlinux.org/yay.git yay/
-(cd yay && makepkg -si)
-rm -rf yay/
+sudo pacman -S --needed base-devel --noconfirm
+git clone https://aur.archlinux.org/yay.git /tmp/yay
+(cd /tmp/yay && makepkg -si --noconfirm)
+rm -rf /tmp/yay
 
 # Multilib
-sudo sed -i '/\[multilib\]/,/Include/s/^#//' /etc/pacman.conf && sudo pacman -Syu
+sudo sed -i '/\[multilib\]/,/Include/s/^#//' /etc/pacman.conf && sudo pacman -Syu --noconfirm
 
 # Salvando como variável
 REASONS_SCRIPT="$REPO/reasons/install.bash"
@@ -138,8 +143,18 @@ echo
 echo "AGRADEÇAM AO MAR AZUL (Ativando bluetooth)"
 sudo systemctl enable --now bluetooth
 
+echo 
+echo "TRANQUEM A ESCOTILHA (Ativando firewall)"
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+# Permissões
+sudo ufw allow ssh
+sudo ufw allow syncthing
+sudo systemctl enable --now ufw.service
+sudo ufw --force enable
+
 source ~/.bashrc
 
 echo 
-echo "FRAGATA PRONTA PARA USO"
+echo "FRAGATA PRONTA PARA USO (Considere reiniciar o PC)"
 echo
